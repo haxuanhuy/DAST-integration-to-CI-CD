@@ -1,15 +1,16 @@
 def scan_type
  def target
 def helloworld=load 'profile-scan/parameters.groovy'
-def helloworld2='aloalo'
+def helloworld2="aloalo"
  pipeline {
      agent any
      
-     echo "Return value is ${helloworld2}"
+     
      stages {
          stage('Pipeline Info') {
                  steps {
                      script {
+                      echo "Return value is ${helloworld2}"
                          echo "<--Parameter Initialization--->"
                          echo """
                          The current parameters are:
