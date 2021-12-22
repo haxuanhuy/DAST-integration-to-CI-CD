@@ -20,8 +20,8 @@ def scan_type
          stage('Pipeline Info') {
                  steps {
                      script {
-                      test_function()
-                      //example.otherExampleMethod()
+                      
+                      example.otherExampleMethod()
                          echo "<--Parameter Initialization--->"
                          echo """
                          The current parameters are:
@@ -142,4 +142,6 @@ def scan_type
              }
          }
  }
-def test_function() { println("hello World")}
+def rootDir = pwd()
+def example = load "${rootDir}/profile-scan/parameters.Groovy"
+//def test_function() { println("hello World")}
