@@ -24,7 +24,10 @@ def scan_type
                  steps {
                      script {
                       def rootDir = pwd()
-                      echo "PWD: ${rootDir}"
+                      def example = load "${rootDir}/profile-scan/parameters.Groovy"
+                      
+                      example.exampleMethod()
+                      example.otherExampleMethod()
                          echo "<--Parameter Initialization--->"
                          echo """
                          The current parameters are:
