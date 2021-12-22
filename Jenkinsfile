@@ -7,6 +7,7 @@ def scan_type
      
      stages {
       stage('Prepare parameters'){
+       steps{
       def rootDir = pwd()
       def example = load "${rootDir}/profile-scan/parameters.Groovy"
            example.exampleMethod()
@@ -24,6 +25,7 @@ def scan_type
                  description: 'Parameter to know if wanna generate report.',
                  name: 'GENERATE_REPORT'
      }
+       }
     }
          stage('Pipeline Info') {
                  steps {
