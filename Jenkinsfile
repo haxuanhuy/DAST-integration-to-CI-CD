@@ -116,6 +116,8 @@ def scan_type
          stage('Git push'){
              steps {
                  script {
+                     sh("git config --global user.email 'haxuanhuyvt1234@gmail.com'")
+                     sh("git config --global user.name 'haxuanhuy'")
                      sh("git add report.html")
                      sh("git commit -m 'Add ZAP report' ")
                      sh("git push -u origin develop")
