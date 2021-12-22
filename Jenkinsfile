@@ -37,22 +37,7 @@ def example = load "${rootDir}/profile-scan/parameters.Groovy"
                      }
                  }
          }
-      
-         stage('Pipeline Info') {
-                 steps {
-                     script {
-                      
-                         echo "<--Parameter Initialization--->"
-                         echo """
-                         The current parameters are:
-                             Scan Type: ${params.SCAN_TYPE}
-                             Target: ${params.TARGET}
-                             Generate report: ${params.GENERATE_REPORT}
-                         """
-                     }
-                 }
-         }
- 
+    
          stage('Setting up OWASP ZAP docker container') {
              steps {
                  script {
