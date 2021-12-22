@@ -2,7 +2,7 @@ def scan_type
  def target
  pipeline {
      agent any
-     load 'profile-scan/Jenkinsfile'
+     def parameters=load 'profile-scan/parameters.groovy'
      stages {
          stage('Pipeline Info') {
                  steps {
