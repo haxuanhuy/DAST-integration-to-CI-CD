@@ -1,5 +1,7 @@
 def scan_type
  def target
+def rootDir
+def example
 //def example=load 'profile-scan/parameters.groovy'
   pipeline {
    agent any
@@ -20,7 +22,7 @@ def scan_type
          stage('Pipeline Info') {
                  steps {
                      script {
-                      
+                      helper_function()
                       example.otherExampleMethod()
                          echo "<--Parameter Initialization--->"
                          echo """
@@ -142,6 +144,8 @@ def scan_type
              }
          }
  }
-def rootDir = pwd()
-def example = load "${rootDir}/profile-scan/parameters.Groovy"
+def helper_function() {
+ rootDir=pwd()
+ example=load "${rootDir}/profile-scan/parameters.Groovy"
+} 
 //def test_function() { println("hello World")}
