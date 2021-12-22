@@ -116,9 +116,12 @@ def scan_type
          stage('Git push'){
              steps {
                  script {
-                     sh("git remote set-url origin https://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@github.com/haxuanhuy/integration.git")
-                     sh("git push https://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@github.com/haxuanhuy/integration.git HEAD:develop")
-                 }
+                     withCredentials([usernamePassword(credentialsId: '877a6730-7c94-41cc-a91c-962a904b67d6',
+                                     usernameVariable: 'username',
+                                     passwordVariable: 'password')]){
+                                       sh("git push https://$password@github.com/haxuanhuy/integration.git HEAD:develop")
+                                     }
+                  }
              }
          }
       
