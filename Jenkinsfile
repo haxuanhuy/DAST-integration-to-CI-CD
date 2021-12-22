@@ -1,13 +1,14 @@
 def scan_type
  def target
 //def example=load 'profile-scan/parameters.groovy'
+node {
+    stage('Beforehand') {
+       def rootDir = pwd()
+       def example = load "${rootDir}/profile-scan/parameters.Groovy"
+    }
+}
   pipeline {
-   agent {
-        node {
-          def rootDir = pwd()
-          def example = load "${rootDir}/profile-scan/parameters.Groovy"
-     }
-   }
+   agent any
      parameters {
          choice  choices: ["Baseline", "APIS", "Full"],
                  description: 'Type of scan that is going to perform inside the container',
