@@ -3,7 +3,7 @@ def scan_type
  pipeline {
      agent any
      def helloworld=load 'profile-scan/parameters.groovy'
-     def parameters=helloworld.parameters()
+     echo "Return value:${helloworld.getParams()}"
      stages {
          stage('Pipeline Info') {
                  steps {
