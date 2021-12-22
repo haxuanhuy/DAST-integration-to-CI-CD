@@ -1,8 +1,7 @@
 checkout scm
 def scan_type
  def target
-def helloworld=load 'profile-scan/parameters.groovy'
-def helloworld2=helloworld.getParam()
+def example=load 'profile-scan/parameters.groovy'
  pipeline {
      agent any
      parameters {
@@ -23,7 +22,8 @@ def helloworld2=helloworld.getParam()
          stage('Pipeline Info') {
                  steps {
                      script {
-                      echo "Return value is ${helloworld2}"
+                      example.exampleMethod()
+                      example.otherExampleMethod()
                          echo "<--Parameter Initialization--->"
                          echo """
                          The current parameters are:
