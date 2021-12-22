@@ -1,3 +1,4 @@
+node{
 def scan_type
  def target
 def rootDir = pwd()
@@ -143,4 +144,4 @@ def rootDir = pwd()
              }
          }
  }
-
+}
