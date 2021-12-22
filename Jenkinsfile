@@ -19,7 +19,7 @@ def scan_type
          stage('Pipeline Info') {
                  steps {
                      script {
-                         echo "<--Parameter Initialization-->"
+                         echo "<--Parameter Initialization--->"
                          echo """
                          The current parameters are:
                              Scan Type: ${params.SCAN_TYPE}
