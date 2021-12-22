@@ -1,9 +1,9 @@
-node{
 def scan_type
  def target
-def rootDir = pwd()
+
 //def example=load 'profile-scan/parameters.groovy'
  pipeline {
+  
      agent any
      parameters {
          choice  choices: ["Baseline", "APIS", "Full"],
@@ -23,6 +23,7 @@ def rootDir = pwd()
          stage('Pipeline Info') {
                  steps {
                      script {
+                      def rootDir = pwd()
                       echo "PWD: ${rootDir}"
                          echo "<--Parameter Initialization--->"
                          echo """
@@ -144,4 +145,3 @@ def rootDir = pwd()
              }
          }
  }
-}
