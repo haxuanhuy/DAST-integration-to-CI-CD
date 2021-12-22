@@ -116,7 +116,7 @@ def scan_type
          stage('Git push'){
              steps {
                  script {
-                     sh("git push")
+                     sh("git push origin HEAD:develop")
                  }
              }
          }
