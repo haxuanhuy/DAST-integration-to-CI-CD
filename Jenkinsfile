@@ -5,12 +5,12 @@ def scan_type
  pipeline {
   
      agent any
-                     def rootDir = pwd()
+     parameters {
+       def rootDir = pwd()
                       def example = load "${rootDir}/profile-scan/parameters.Groovy"
                       
                       example.exampleMethod()
                       example.otherExampleMethod()
-     parameters {
          choice  choices: ["Baseline", "APIS", "Full"],
                  description: 'Type of scan that is going to perform inside the container',
                  name: 'SCAN_TYPE'
@@ -25,6 +25,21 @@ def scan_type
      }
      
      stages {
+         stage('Pipeline Info') {
+                 steps {
+                     script {
+                      
+                         echo "<--Parameter Initialization--->"
+                         echo """
+                         The current parameters are:
+                             Scan Type: ${params.SCAN_TYPE}
+                             Target: ${params.TARGET}
+                             Generate report: ${params.GENERATE_REPORT}
+                         """
+                     }
+                 }
+         }
+      
          stage('Pipeline Info') {
                  steps {
                      script {
