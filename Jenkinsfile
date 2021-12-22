@@ -11,7 +11,7 @@ def scan_type
         script{
       def rootDir = pwd()
       def example = load "${rootDir}/profile-scan/parameters.Groovy"
-           example.exampleMethod()
+           
            example.otherExampleMethod() 
        parameters {  
          choice  choices: ["Baseline", "APIS", "Full"],
