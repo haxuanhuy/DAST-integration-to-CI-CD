@@ -18,7 +18,7 @@ def scan_type
                  description: 'Type of scan that is going to perform inside the container',
                  name: 'SCAN_TYPE'
  
-         string defaultValue: "https://example.com",
+         string defaultValue: example.exampleMethod(),
                  description: 'Target URL to scan',
                  name: 'TARGET'
  
