@@ -117,7 +117,7 @@ def scan_type
              steps {
                  script {
                      sh("git remote set-url origin https://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@github.com/haxuanhuy/integration.git")
-                     sh("git push origin develop")
+                     sh("git push origin HEAD:develop")
                  }
              }
          }
