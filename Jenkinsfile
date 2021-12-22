@@ -120,8 +120,8 @@ def scan_type
                      sh("git config --global user.name 'haxuanhuy'")
                      sh("git add report.html")
                      sh("git commit -m 'Add ZAP report' ")
-                     sh("git remote add origin https://github.com/haxuanhuy/integration.git")
-                     sh("git push -u origin develop")
+                     //sh("git remote add origin https://github.com/haxuanhuy/integration.git")
+                     sh("git push -u origin master")
                  }
              }
          }
