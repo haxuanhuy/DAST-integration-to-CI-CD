@@ -1,6 +1,6 @@
 def scan_type
  def target
-def helloworld=load 'profile-scan/parameters.groovy'
+//def helloworld=load 'profile-scan/parameters.groovy'
 def helloworld2="aloalo"
  pipeline {
      agent any
