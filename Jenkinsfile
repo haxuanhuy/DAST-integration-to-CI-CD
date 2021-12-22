@@ -116,12 +116,11 @@ def scan_type
          stage('Git push'){
              steps {
                  script {
-                     sh("git config --global user.email 'haxuanhuyvt1234@gmail.com'")
-                     sh("git config --global user.name 'haxuanhuy'")
-                     sh("git add report.html")
-                     sh("git commit -m 'Add ZAP report' ")
-                     //sh("git remote add origin https://github.com/haxuanhuy/integration.git")
-                     sh("git push -u origin HEAD:develop")
+                     withCredentials([usernamePassword(credentialsId: '8666f088-4e98-4275-9ca1-eec5d5f462f0',
+                                      usernameVariable: 'username',
+                                      passwordVariable: 'password')]){
+                                         sh("git push https://$username:$password@github.com/haxuanhuy/integration.git")
+                                      }
                  }
              }
          }
