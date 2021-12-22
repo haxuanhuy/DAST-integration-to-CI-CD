@@ -2,7 +2,8 @@ def scan_type
  def target
  pipeline {
      agent any
-     def parameters=load 'profile-scan/parameters.groovy'
+     def helloworld=load 'profile-scan/parameters.groovy'
+     def parameters=helloworld.parameters()
      stages {
          stage('Pipeline Info') {
                  steps {
