@@ -1,7 +1,8 @@
 checkout scm
 def scan_type
  def target
-def example=load 'profile-scan/parameters.groovy'
+def rootDir = pwd()
+//def example=load 'profile-scan/parameters.groovy'
  pipeline {
      agent any
      parameters {
@@ -22,8 +23,7 @@ def example=load 'profile-scan/parameters.groovy'
          stage('Pipeline Info') {
                  steps {
                      script {
-                      example.exampleMethod()
-                      example.otherExampleMethod()
+                      echo "PWD: ${rootDir}"
                          echo "<--Parameter Initialization--->"
                          echo """
                          The current parameters are:
