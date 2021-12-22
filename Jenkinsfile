@@ -1,16 +1,16 @@
 def scan_type
- def target
-def rootDir
-def example
+def target
+//def rootDir
+//def example
 //def example=load 'profile-scan/parameters.groovy'
   pipeline {
    agent any
      parameters {
-         choice  choices: ["Baseline", "APIS", "Full"],
+         choice  choices: ["Full", "APIS", "Baseline"],
                  description: 'Type of scan that is going to perform inside the container',
                  name: 'SCAN_TYPE'
  
-         string defaultValue: "https://example.com",
+         string defaultValue: "http://testphp.vulnweb.com",
                  description: 'Target URL to scan',
                  name: 'TARGET'
  
@@ -22,8 +22,6 @@ def example
          stage('Pipeline Info') {
                  steps {
                      script {
-                      helper_function()
-                      example.otherExampleMethod()
                          echo "<--Parameter Initialization--->"
                          echo """
                          The current parameters are:
@@ -144,8 +142,9 @@ def example
              }
          }
  }
+/*
 def helper_function() {
  rootDir=pwd()
  example=load "${rootDir}/profile-scan/parameters.Groovy"
-} 
+} */
 //def test_function() { println("hello World")}
