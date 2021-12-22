@@ -119,7 +119,7 @@ def scan_type
                      withCredentials([usernamePassword(credentialsId: '8666f088-4e98-4275-9ca1-eec5d5f462f0',
                                       usernameVariable: 'username',
                                       passwordVariable: 'password')]){
-                                         sh("git push https://$username:$password@github.com/haxuanhuy/integration.git")
+                                         sh("git push https://$username:$password@github.com/haxuanhuy/integration.git HEAD:develop")
                                       }
                  }
              }
