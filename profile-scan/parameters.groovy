@@ -1,4 +1,8 @@
- def getParams {
-        return 'hello world'
+def exampleMethod() {
+    println("exampleMethod")
+}
+
+def otherExampleMethod() {
+    println("otherExampleMethod")
 }
 return this
