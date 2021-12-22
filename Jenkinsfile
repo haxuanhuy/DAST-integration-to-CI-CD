@@ -1,28 +1,18 @@
 def scan_type
  def target
 //def example=load 'profile-scan/parameters.groovy'
- pipeline {
+node {
+   def rootDir = pwd()
+   def example = load "${rootDir}/profile-scan/parameters.Groovy"
+}
+  pipeline {
      agent any
-       script{
-      def rootDir = pwd()
-      def example = load "${rootDir}/profile-scan/parameters.Groovy"
-        example.otherExampleMethod()
-       }
-     
-     stages {
-      stage('Prepare parameters'){
-       steps{
-        script{
-      def rootDir = pwd()
-      def example = load "${rootDir}/profile-scan/parameters.Groovy"
-           
-           example.otherExampleMethod() 
-       parameters {  
+     parameters {
          choice  choices: ["Baseline", "APIS", "Full"],
                  description: 'Type of scan that is going to perform inside the container',
                  name: 'SCAN_TYPE'
  
-         string defaultValue: example.exampleMethod(),
+         string defaultValue: "https://example.com",
                  description: 'Target URL to scan',
                  name: 'TARGET'
  
@@ -30,13 +20,11 @@ def scan_type
                  description: 'Parameter to know if wanna generate report.',
                  name: 'GENERATE_REPORT'
      }
-        }
-       }
-    }
+     stages {
          stage('Pipeline Info') {
                  steps {
                      script {
-                      
+                      example.otherExampleMethod()
                          echo "<--Parameter Initialization--->"
                          echo """
                          The current parameters are:
@@ -47,7 +35,7 @@ def scan_type
                      }
                  }
          }
-    
+ 
          stage('Setting up OWASP ZAP docker container') {
              steps {
                  script {
