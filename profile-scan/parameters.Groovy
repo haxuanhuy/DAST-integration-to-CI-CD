@@ -1,5 +1,5 @@
 def exampleMethod() {
-    println("exampleMethod")
+    return "https://example.com"
 }
 
 def otherExampleMethod() {
