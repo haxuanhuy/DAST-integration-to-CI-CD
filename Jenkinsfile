@@ -3,14 +3,15 @@ def scan_type
 //def example=load 'profile-scan/parameters.groovy'
  pipeline {
      agent any
-    node{
-  def rootDir = pwd()
-  def example = load "${rootDir}/profile-scan/parameters.Groovy"
-   example.exampleMethod()
-                      example.otherExampleMethod()
-  }
-     parameters {  
-                      
+     
+     
+     stages {
+      stage('Prepare parameters'){
+      def rootDir = pwd()
+      def example = load "${rootDir}/profile-scan/parameters.Groovy"
+           example.exampleMethod()
+           example.otherExampleMethod() 
+       parameters {  
          choice  choices: ["Baseline", "APIS", "Full"],
                  description: 'Type of scan that is going to perform inside the container',
                  name: 'SCAN_TYPE'
@@ -23,8 +24,7 @@ def scan_type
                  description: 'Parameter to know if wanna generate report.',
                  name: 'GENERATE_REPORT'
      }
-     
-     stages {
+    }
          stage('Pipeline Info') {
                  steps {
                      script {
