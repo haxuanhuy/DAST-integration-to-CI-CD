@@ -1,12 +1,6 @@
 def scan_type
  def target
 //def example=load 'profile-scan/parameters.groovy'
-node {
-    stage('Beforehand') {
-       def rootDir = pwd()
-       def example = load "${rootDir}/profile-scan/parameters.Groovy"
-    }
-}
   pipeline {
    agent any
      parameters {
@@ -26,7 +20,8 @@ node {
          stage('Pipeline Info') {
                  steps {
                      script {
-                      example.otherExampleMethod()
+                      test_function()
+                      //example.otherExampleMethod()
                          echo "<--Parameter Initialization--->"
                          echo """
                          The current parameters are:
@@ -147,3 +142,4 @@ node {
              }
          }
  }
+def test_function() { println("hello World")}
