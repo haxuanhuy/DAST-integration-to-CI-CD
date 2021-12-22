@@ -3,7 +3,11 @@ def scan_type
 //def example=load 'profile-scan/parameters.groovy'
  pipeline {
      agent any
-     
+       script{
+      def rootDir = pwd()
+      def example = load "${rootDir}/profile-scan/parameters.Groovy"
+        example.otherExampleMethod()
+       }
      
      stages {
       stage('Prepare parameters'){
