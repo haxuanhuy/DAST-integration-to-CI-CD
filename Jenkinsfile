@@ -116,11 +116,8 @@ def scan_type
          stage('Git push'){
              steps {
                  script {
-                     withCredentials([usernamePassword(credentialsId: '8666f088-4e98-4275-9ca1-eec5d5f462f0',
-                                      usernameVariable: 'username',
-                                      passwordVariable: 'password')]){
-                                         sh("git push https://$username:$password@github.com/haxuanhuy/integration.git HEAD:develop")
-                                      }
+                     sh("git remote set-url origin https://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@github.com/haxuanhuy/integration.git")
+                     sh("git push origin develop")
                  }
              }
          }
