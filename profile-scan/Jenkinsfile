@@ -1,4 +1,4 @@
- parameters {
+ def parameters {
          choice  choices: ["Baseline", "APIS", "Full"],
                  description: 'Type of scan that is going to perform inside the container',
                  name: 'SCAN_TYPE'
@@ -11,3 +11,4 @@
                  description: 'Parameter to know if wanna generate report.',
                  name: 'GENERATE_REPORT'
 }
+return this
