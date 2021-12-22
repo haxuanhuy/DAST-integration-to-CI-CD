@@ -2,7 +2,7 @@ def scan_type
  def target
  pipeline {
      agent any
-     load 'profile-scan'
+     load 'profile-scan/Jenkinsfile'
      stages {
          stage('Pipeline Info') {
                  steps {
