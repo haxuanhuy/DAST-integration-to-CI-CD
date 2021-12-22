@@ -116,6 +116,8 @@ def scan_type
          stage('Git push'){
              steps {
                  script {
+                     sh("git add report.html")
+                     sh("git commit -m "Add ZAP report" ")
                      sh("git push -u origin develop")
                  }
              }
