@@ -1,7 +1,8 @@
+checkout scm
 def scan_type
  def target
-//def helloworld=load 'profile-scan/parameters.groovy'
-def helloworld2="aloalo"
+def helloworld=load 'profile-scan/parameters.groovy'
+def helloworld2=helloworld.getParam()
  pipeline {
      agent any
      parameters {
