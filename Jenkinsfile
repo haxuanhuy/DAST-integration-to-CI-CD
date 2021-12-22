@@ -112,6 +112,15 @@ def scan_type
                  }
              }
          }
+      
+         stage('Git push'){
+             steps {
+                 script {
+                     sh("git status")
+                 }
+             }
+         }
+      
      }
      post {
              always {
