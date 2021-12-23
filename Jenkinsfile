@@ -1,7 +1,8 @@
 def scan_type
 def target
-//def rootDir
-//def example
+def rootDir
+def example
+def link
 //def example=load 'profile-scan/parameters.groovy'
   pipeline {
    agent any
@@ -22,6 +23,10 @@ def target
          stage('Pipeline Info') {
                  steps {
                      script {
+                        rootDir=pwd()
+                        example=load "${rootDir}/profile-scan/parameters.Groovy"
+                        link=example.exampleMethod()
+                        echo "Link here: ${link}"
                          echo "<--Parameter Initialization---->"
                          echo """
                          The current parameters are:
