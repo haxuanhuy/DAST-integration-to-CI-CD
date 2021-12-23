@@ -2,37 +2,21 @@ def scan_type
 def target
 def rootDir
 def example
-def link
-//def example=load 'profile-scan/parameters.groovy'
   pipeline {
    agent any
-     parameters {
-         choice  choices: ["Baseline", "APIS", "Full"],
-                 description: 'Type of scan that is going to perform inside the container',
-                 name: 'SCAN_TYPE'
- 
-         string defaultValue: "http://testphp.vulnweb.com",
-                 description: 'Target URL to scan',
-                 name: 'TARGET'
- 
-         booleanParam defaultValue: true,
-                 description: 'Parameter to know if wanna generate report.',
-                 name: 'GENERATE_REPORT'
-     }
      stages {
          stage('Pipeline Info') {
                  steps {
                      script {
                         rootDir=pwd()
                         example=load "${rootDir}/profile-scan/parameters.Groovy"
-                        link=example.exampleMethod()
-                        echo "Link here: ${link}"
+                        scan_type=example.scanTypeProvider()
+                        target=example.URLProvider()
                          echo "<--Parameter Initialization---->"
                          echo """
                          The current parameters are:
-                             Scan Type: ${params.SCAN_TYPE}
-                             Target: ${params.TARGET}
-                             Generate report: ${params.GENERATE_REPORT}
+                             Scan Type: ${scan_type}
+                             Target: ${target}
                          """
                      }
                  }
@@ -56,9 +40,6 @@ def link
  
  
          stage('Prepare wrk directory') {
-             when {
-                         environment name : 'GENERATE_REPORT', value: 'true'
-             }
              steps {
                  script {
                          sh """
@@ -73,9 +54,7 @@ def link
          stage('Scanning target on owasp container') {
              steps {
                  script {
-                     scan_type = "${params.SCAN_TYPE}"
                      echo "----> scan_type: $scan_type"
-                     target = "${params.TARGET}"
                      if(scan_type == "Baseline"){
                          sh """
                              docker exec owasp \
@@ -147,9 +126,4 @@ def link
              }
          }
  }
-/*
-def helper_function() {
- rootDir=pwd()
- example=load "${rootDir}/profile-scan/parameters.Groovy"
-} */
-//def test_function() { println("hello World")}
+
