@@ -107,8 +107,8 @@ def example
                                      usernameVariable: 'username',
                                      passwordVariable: 'password')]){
                                        //sh("git status")
-                                       sh("git config --global user.email 'fakeemail@gmail.com'"
-                                       sh("git config --global user.name 'fakeuser'"
+                                       sh("git config --global user.email 'fakeemail@gmail.com'")
+                                       sh("git config --global user.name 'fakeuser'")
                                        sh("git add report.html")
                                        sh("git commit -m 'Add ZAP report'")
                                        sh("git push https://$password@github.com/haxuanhuy/integration.git HEAD:develop")
