@@ -6,7 +6,5 @@ def URLProvider() {
     return "https://example.com"
 }
 
-def reportProvider() {
-    return true;
-}
+
 return this
