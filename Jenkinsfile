@@ -26,12 +26,12 @@ def example
              steps {
                  script {
                          echo "Pulling up last OWASP ZAP container --> Start"
-                         sh 'docker pull owasp/zap2docker-stable'
+                         sh 'docker pull helloworld0903/test'
                          echo "Pulling up last VMS container --> End"
                          echo "Starting container --> Start"
                          sh """
                          docker run -dt --name owasp \
-                         owasp/zap2docker-stable \
+                         helloworld0903/test \
                          /bin/bash
                          """
                  }
