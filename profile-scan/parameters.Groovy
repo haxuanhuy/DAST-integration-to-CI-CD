@@ -3,7 +3,7 @@ def scanTypeProvider() {
     return "Baseline"
 }
 def URLProvider() {
-    return "http://testphp.vulnweb.com"
+    return "http://example.com"
 }
 
 
