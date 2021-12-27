@@ -30,7 +30,7 @@ def example
                          echo "Pulling up last VMS container --> End"
                          echo "Starting container --> Start"
                          sh """
-                         docker run -dt --name owasp \
+                         docker run -dt --name helloworld \
                          helloworld0903/test \
                          /bin/bash
                          """
@@ -43,7 +43,7 @@ def example
              steps {
                  script {
                          sh """
-                             docker exec owasp \
+                             docker exec helloworld \
                              mkdir /zap/wrk
                          """
                      }
@@ -57,7 +57,7 @@ def example
                      echo "----> scan_type: $scan_type"
                      if(scan_type == "Baseline"){
                          sh """
-                             docker exec owasp \
+                             docker exec helloworld \
                              zap-baseline.py \
                              -t $target \
                              -r report.html \
@@ -66,7 +66,7 @@ def example
                      }
                      else if(scan_type == "APIS"){
                          sh """
-                             docker exec owasp \
+                             docker exec helloworld \
                              zap-api-scan.py \
                              -t $target \
                              -f openapi \
@@ -76,7 +76,7 @@ def example
                      }
                      else if(scan_type == "Full"){
                          sh """
-                             docker exec owasp \
+                             docker exec helloworld \
                              zap-full-scan.py \
                              -t $target \
                              -r report.html \
@@ -94,7 +94,7 @@ def example
              steps {
                  script {
                      sh '''
-                         docker cp owasp:/zap/wrk/report.html ${WORKSPACE}/report.html
+                         docker cp helloworld:/zap/wrk/report.html ${WORKSPACE}/report.html
                      '''
                  }
              }
@@ -122,8 +122,8 @@ def example
              always {
                  echo "Removing container"
                  sh '''
-                     docker stop owasp
-                     docker rm owasp
+                     docker stop helloworld
+                     docker rm helloworld
                  '''
              }
          }
